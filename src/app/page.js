@@ -48,15 +48,17 @@ function ProductsContent() {
       setLoading(true);
       setVisibleProducts([]); 
       try {
-        let url = 'https://fakestoreapi.com/products';
+        let url = '/api/products';
         
         if (currentCategory) {
-          url = `https://fakestoreapi.com/products/category/${currentCategory}`;
+          url = `/api/products?category=${currentCategory}`;
         }
         
         const response = await fetch(url);
         const data = await response.json();
-        setAllProducts(data);
+        // Handle both direct array and {products: array} format
+        const products = Array.isArray(data) ? data : data.products;
+        setAllProducts(products);
       } catch (error) {
         console.error('Error fetching products:', error);
       } finally {

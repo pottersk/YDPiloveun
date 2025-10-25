@@ -1,13 +1,23 @@
 import { NextResponse } from 'next/server';
 
 /**
- * ดึงรายการสินค้าทั้งหมดจาก Fake Store API
+ * ดึงรายการสินค้าทั้งหมดหรือตามหมวดหมู่จาก Fake Store API
  * @param {Request} request - Request object ที่เข้ามา
  * @returns {NextResponse} JSON response ที่มีรายการสินค้าทั้งหมดหรือข้อความ error
  */
 export async function GET(request) {
   try {
-    const apiResponse = await fetch('https://fakestoreapi.com/products', { //ดึงข้อมูลสินค้าทั้งหมด
+    // ดึง category จาก query parameters
+    const { searchParams } = new URL(request.url);
+    const category = searchParams.get('category');
+    
+    // สร้าง URL ตาม category ที่ได้รับ
+    let url = 'https://fakestoreapi.com/products';
+    if (category) {
+      url = `https://fakestoreapi.com/products/category/${category}`;
+    }
+    
+    const apiResponse = await fetch(url, { //ดึงข้อมูลสินค้าทั้งหมด
       headers: {
         'Content-Type': 'application/json', 
       },

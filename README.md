@@ -7,9 +7,9 @@
 ## Tech Stack
 
 ### Frontend
-- **Next.js 15** - Full-stack React framework พร้อม App Router
-- **React 19** - UI library พร้อม modern hooks
-- **TailwindCSS 4** - Utility-first CSS framework
+- **Next.js** - Full-stack React framework พร้อม App Router
+- **React** - UI library พร้อม modern hooks
+- **TailwindCSS** - Utility-first CSS framework
 
 ### Backend
 - **Next.js API Routes** - Serverless API endpoints
@@ -32,5 +32,3 @@ npm run lint     # ตรวจสอบคุณภาพโค้ด
 ### Endpoints
 - `GET /api/products` - ดึงสินค้าทั้งหมด
 - `GET /api/products/[id]` - ดึงสินค้าตาม ID
-
-ข้อมูลทั้งหมดมาจาก [Fake Store API]
